@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "13952ddc-df3f-4933-9795-dc267c240d1d",
+		"name": "LLM requests test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30658476"
+	},
+	"item": [
+		{
+			"name": "Gateway test gemma2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"gemma-2-2b-it\",\r\n    \"messages\": [\r\n        { \"role\": \"system\", \"content\": \"Always answer in rhymes. Today is Thursday\" },\r\n        { \"role\": \"user\", \"content\": \"What day is it today?\" }\r\n    ],\r\n    \"temperature\": 0.7,\r\n    \"max_tokens\": -1,\r\n    \"stream\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway test llama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"llama-3.2-1b-instruct\",\r\n    \"messages\": [\r\n        { \"role\": \"system\", \"content\": \"Always answer in rhymes. Today is Thursday\" },\r\n        { \"role\": \"user\", \"content\": \"What day is it today?\" }\r\n    ],\r\n    \"temperature\": 0.7,\r\n    \"max_tokens\": -1,\r\n    \"stream\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GLHF completion test",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"Tell me a joke about programmers\",\r\n  \"model\": \"meta-llama/Meta-Llama-3.1-405B-Instruct\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/completion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"completion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GLHF chat test",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"messages\": [\r\n    { \"role\": \"system\", \"content\": \"You are a helpful assistant.\" },\r\n    { \"role\": \"user\", \"content\": \"What do you know about the National Technical University of Athens and the Electrical and Computing Engineering department?\" }\r\n  ],\r\n  \"model\": \"google/gemma-2-27b-it\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"chat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
